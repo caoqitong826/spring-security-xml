@@ -30,6 +30,7 @@ public class AdminController {
     return "/admin/detial";
   }
   @RequestMapping(value = {"/admin/delete"},method = RequestMethod.GET)
+  @Secured("ROOT")
   public String deleteAction(){
     return "/admin/delete";
   }

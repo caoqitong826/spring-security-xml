@@ -20,17 +20,18 @@ public class HomeController {
         return "/index";
     }
 
-    @RequestMapping(value = {"/login"},method = RequestMethod.POST)
-    public String loginPOSTAction(){
-
-        //return "login";
-        return "redirect:/admin/index";
-    }
     @RequestMapping(value = {"/login"},method = RequestMethod.GET)
     public String loginAction(){
 
         //return "login";
         return "/login";
+    }
+
+    @RequestMapping(value = {"/loginPost"},method = RequestMethod.POST)
+    public String loginPOSTAction(){
+
+        //return "login";
+        return "/admin/index";
     }
 
 //    @RequestMapping(value = "/error",method = RequestMethod.GET)

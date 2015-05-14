@@ -1,24 +1,3 @@
-<<<<<<< HEAD
-<!--<?xml version="1.0" encoding="UTF-8"?>-->
-<!--<beans:beans xmlns="http://www.springframework.org/schema/security"-->
-             <!--xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
-             <!--xsi:schemaLocation="http://www.springframework.org/schema/beans-->
-	<!--http://www.springframework.org/schema/beans/spring-beans-3.0.xsd-->
-	<!--http://www.springframework.org/schema/security-->
-	<!--http://www.springframework.org/schema/security/spring-security-3.1.xsd">-->
-
-    <!--<http auto-config="true">-->
-        <!--<intercept-url pattern="/snackslink/**" access="ROLE_USER"/>-->
-    <!--</http>-->
-   <!--<authentication-manager>-->
-          <!--<authentication-provider>-->
-              <!--<user-service>-->
-                  <!--<user name="make" password="123456" authorities="ROLE_USER" />-->
-              <!--</user-service>-->
-          <!--</authentication-provider>-->
-   <!--</authentication-manager>-->
-<!--</beans:beans>-->
-=======
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/security"
              xmlns:beans="http://www.springframework.org/schema/beans"
@@ -28,15 +7,49 @@
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security.xsd">
 
-  <http auto-config="true">
-    <intercept-url pattern="/snackslink/**" access="ROLE_USER"/>
-  </http>
-  <authentication-manager>
+  <!--<http auto-config="true">-->
+    <!--<intercept-url pattern="/admin/**" access="ROLE_USER"/>-->
+  <!--</http>-->
+    <global-method-security secured-annotations="enabled" />
+    <http use-expressions="true">
+        <intercept-url pattern="/logout" access="permitAll"/>
+        <intercept-url pattern="/login" access="permitAll"/>
+        <intercept-url pattern="/" access="permitAll"/>
+        <intercept-url pattern="/home" access="permitAll"/>
+        <intercept-url pattern="/admin/index" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/admin/detial" access="hasRole('ROLE_USER')"/>
+        <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+
+        <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
+
+
+        <logout
+                logout-success-url="/login?logout"
+                logout-url="/logout"
+                />
+        <form-login
+                authentication-failure-url="/login?error"
+                login-page="/login"
+                login-processing-url="/loginPost"
+                password-parameter="password"
+                username-parameter="username"
+                default-target-url='/admin/index'
+                always-use-default-target='true'
+                />
+        <session-management invalid-session-url="/sessionTimeout.htm" />
+    </http>
+
+
+
+    <authentication-manager>
     <authentication-provider>
       <user-service>
-        <user name="make" password="123456" authorities="ROLE_USER"/>
+        <user name="make" password="123" authorities="ROLE_USER"/>
+        <user name="makenv" password="123" authorities="ROLE_ADMIN,ROLE_USER"/>
+        <user name="root" password="123" authorities="ROOT"/>
       </user-service>
     </authentication-provider>
   </authentication-manager>
+
+
 </beans:beans>
->>>>>>> a72980136bddd94b462910b7952c6d3d88e76414
