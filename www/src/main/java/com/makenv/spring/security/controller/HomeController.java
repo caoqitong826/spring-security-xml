@@ -33,7 +33,10 @@ public class HomeController {
         //return "login";
         return "/admin/index";
     }
-
+    @RequestMapping(value = "/denied",method = RequestMethod.GET)
+    public String accessDeniedAction(){
+        return "/denied";
+    }
 //    @RequestMapping(value = "/error",method = RequestMethod.GET)
 //    @ResponseBody
 //    public String errorAction(){

@@ -1,0 +1,28 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<!--<beans xmlns="http://www.springframework.org/schema/beans"-->
+       <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+       <!--xmlns:webflow-config="http://www.springframework.org/schema/webflow-config"-->
+       <!--xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/webflow-config http://www.springframework.org/schema/webflow-config/spring-webflow-config-2.3.xsd">-->
+
+       <!--<context-param>-->
+              <!--<param-name>contextConfigLocation</param-name>-->
+              <!--<param-value>-->
+                     <!--/WEB-INF/applicationContext-security.xml-->
+                     <!--/WEB-INF/applicationContext.xml-->
+              <!--</param-value>-->
+       <!--</context-param>-->
+
+       <!--<listener>-->
+              <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
+       <!--</listener>-->
+
+       <!--<filter>-->
+              <!--<filter-name>springSecurityFilterChain</filter-name>-->
+              <!--<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>-->
+       <!--</filter>-->
+
+       <!--<filter-mapping>-->
+              <!--<filter-name>springSecurityFilterChain</filter-name>-->
+              <!--<url-pattern>/*</url-pattern>-->
+       <!--</filter-mapping>-->
+<!--</beans>-->

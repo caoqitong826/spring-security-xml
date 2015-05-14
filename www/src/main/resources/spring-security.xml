@@ -11,7 +11,8 @@
     <!--<intercept-url pattern="/admin/**" access="ROLE_USER"/>-->
   <!--</http>-->
     <global-method-security secured-annotations="enabled" />
-    <http use-expressions="true">
+
+    <http use-expressions="true" access-denied-page="/denied">
         <intercept-url pattern="/logout" access="permitAll"/>
         <intercept-url pattern="/login" access="permitAll"/>
         <intercept-url pattern="/" access="permitAll"/>
@@ -19,13 +20,12 @@
         <intercept-url pattern="/admin/index" access="hasRole('ROLE_USER')"/>
         <intercept-url pattern="/admin/detial" access="hasRole('ROLE_USER')"/>
         <intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
-
         <intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
 
-
         <logout
-                logout-success-url="/login?logout"
+                logout-success-url="/"
                 logout-url="/logout"
+                invalidate-session="true"
                 />
         <form-login
                 authentication-failure-url="/login?error"
@@ -39,8 +39,6 @@
         <session-management invalid-session-url="/sessionTimeout.htm" />
     </http>
 
-
-
     <authentication-manager>
     <authentication-provider>
       <user-service>
@@ -50,6 +48,5 @@
       </user-service>
     </authentication-provider>
   </authentication-manager>
-
 
 </beans:beans>
